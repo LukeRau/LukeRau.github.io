@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke Rau - Character Sheet Resume</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .sheet { box-shadow: none; page-break-inside: avoid; }
+            .section { page-break-inside: avoid; }
+            .experience-item { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Bookman Old Style', serif;
+            background: #f5e6d3;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sheet {
+            width: 8.5in;
+            max-height: 11in;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            border: 2px solid #8b4513;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #8b4513;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #8b4513;
+            font-weight: bold;
+        }
+        
+        .header .subtitle {
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .contact-bar {
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 15px;
+            padding: 5px;
+            background: #faf8f3;
+            border: 1px solid #8b4513;
+        }
+        
+        .contact-bar a {
+            color: #8b4513;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .char-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 11px;
+        }
+        
+        .info-box {
+            border: 2px solid #8b4513;
+            padding: 6px;
+            background: #faf8f3;
+        }
+        
+        .info-box label {
+            font-weight: bold;
+            display: block;
+            font-size: 9px;
+            text-transform: uppercase;
+            color: #8b4513;
+        }
+        
+        .info-box .value {
+            font-size: 13px;
+            margin-top: 2px;
+        }
+        
+        .abilities {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        
+        .ability {
+            border: 2px solid #8b4513;
+            text-align: center;
+            padding: 6px 4px;
+            background: #faf8f3;
+        }
+        
+        .ability .name {
+            font-weight: bold;
+            font-size: 10px;
+            color: #8b4513;
+            text-transform: uppercase;
+        }
+        
+        .ability .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .ability .modifier {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .ability .description {
+            font-size: 8px;
+            margin-top: 5px;
+            line-height: 1.2;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 12px;
+            border: 2px solid #8b4513;
+            padding: 8px;
+            background: #faf8f3;
+        }
+        
+        .section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #8b4513;
+            text-transform: uppercase;
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .skills-list {
+            font-size: 9.5px;
+            line-height: 1.5;
+        }
+        
+        .skill-item {
+            margin-bottom: 3px;
+        }
+        
+        .skill-item:before {
+            content: "⬥ ";
+            color: #8b4513;
+        }
+        
+        .experience-item {
+            margin-bottom: 8px;
+            font-size: 9.5px;
+        }
+        
+        .experience-item .title {
+            font-weight: bold;
+            color: #8b4513;
+            font-size: 10.5px;
+        }
+        
+        .experience-item .dates {
+            font-style: italic;
+            color: #666;
+            font-size: 9px;
+        }
+        
+        .experience-item ul {
+            margin: 5px 0 0 15px;
+            padding: 0;
+        }
+        
+        .experience-item li {
+            margin-bottom: 2px;
+            line-height: 1.4;
+        }
+        
+        .feature-box {
+            background: #f0e8d8;
+            border: 1px solid #8b4513;
+            padding: 6px;
+            margin-bottom: 6px;
+            font-size: 9.5px;
+        }
+        
+        .feature-box .feature-name {
+            font-weight: bold;
+            color: #8b4513;
+            font-size: 10.5px;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            font-size: 9.5px;
+        }
+        
+        .tech-category {
+            font-weight: bold;
+            color: #8b4513;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 9px;
+            font-style: italic;
+            color: #666;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #8b4513;
+        }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <div class="header">
+            <h1>LUKE RAU</h1>
+            <div class="subtitle">Tech Artificer Character Sheet</div>
+        </div>
+        
+        <div class="contact-bar">
+            📧 [your.email@example.com] | 💼 [linkedin.com/in/yourprofile] | 🐙 [github.com/yourusername] | 📍 Green Haven, Maryland
+        </div>
+        
+        <div class="char-info">
+            <div class="info-box">
+                <label>Class & Level</label>
+                <div class="value">Artificer (IT Engineer) – Level 5</div>
+            </div>
+            <div class="info-box">
+                <label>Specialization</label>
+                <div class="value">Cyber & GRC</div>
+            </div>
+            <div class="info-box">
+                <label>Alignment</label>
+                <div class="value">Lawful Secure</div>
+            </div>
+            <div class="info-box">
+                <label>Background</label>
+                <div class="value">Eagle Scout / Homelab Keeper</div>
+            </div>
+        </div>
+        
+        <div class="abilities">
+            <div class="ability">
+                <div class="name">STR</div>
+                <div class="score">12</div>
+                <div class="modifier">+1</div>
+                <div class="description">Infrastructure & systems management</div>
+            </div>
+            <div class="ability">
+                <div class="name">DEX</div>
+                <div class="score">14</div>
+                <div class="modifier">+2</div>
+                <div class="description">Quick automation & scripting</div>
+            </div>
+            <div class="ability">
+                <div class="name">CON</div>
+                <div class="score">13</div>
+                <div class="modifier">+1</div>
+                <div class="description">Reliable uptime & consistency</div>
+            </div>
+            <div class="ability">
+                <div class="name">INT</div>
+                <div class="score">17</div>
+                <div class="modifier">+3</div>
+                <div class="description">Technical problem solving</div>
+            </div>
+            <div class="ability">
+                <div class="name">WIS</div>
+                <div class="score">15</div>
+                <div class="modifier">+2</div>
+                <div class="description">Security awareness & risk assessment</div>
+            </div>
+            <div class="ability">
+                <div class="name">CHA</div>
+                <div class="score">14</div>
+                <div class="modifier">+2</div>
+                <div class="description">Documentation & knowledge sharing</div>
+            </div>
+        </div>
+        
+        <div class="two-column">
+            <div>
+                <div class="section">
+                    <div class="section-title">⚔️ Core Proficiencies</div>
+                    <div class="tech-grid">
+                        <div><span class="tech-category">Cloud:</span> AWS (EC2, S3, IAM, Route53, Systems Manager, Security Hub, Landing Zone), Azure AD</div>
+                        <div><span class="tech-category">Scripting:</span> Python, Bash, PowerShell, GDScript</div>
+                        <div><span class="tech-category">Compliance:</span> CMMC 2.0, NIST 800-171, NIST 800-53</div>
+                        <div><span class="tech-category">Systems:</span> Linux (Ubuntu, RHEL, Amazon Linux), Windows Server, Active Directory</div>
+                        <div><span class="tech-category">Tools:</span> Git/GitLab, Confluence, NinjaRMM, Saltstack</div>
+                        <div><span class="tech-category">Security:</span> CloudTrail, GRC, Risk Assessments, Policy Writing, Security Audits</div>
+                        <div><span class="tech-category">Infrastructure:</span> Proxmox, Docker, UniFi, AWS Managed AD, Amazon Workspaces</div>
+                        <div><span class="tech-category">Learning:</span> Godot Engine, Game Development, CI/CD</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🎲 Artificer Features</div>
+                    <div class="feature-box">
+                        <div class="feature-name">Master Tinkerer</div>
+                        Builds and automates solutions using PowerShell, Bash, and Python. Reduces manual work through elegant scripting.
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-name">Infused Documentation</div>
+                        Creates comprehensive technical documentation and procedures. Makes complex systems understandable.
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-name">Security Architect</div>
+                        Designs and implements CMMC/NIST compliant environments. Expert in AWS Landing Zone architecture.
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-name">Eagle Scout Training</div>
+                        Natural leader with EDGE methodology (Explain, Demonstrate, Guide, Enable). Mentors and trains team members.
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🏰 Homelab & Projects</div>
+                    <div class="skills-list">
+                        <div class="skill-item"><strong>Proxmox Cluster:</strong> Self-hosted virtualization environment</div>
+                        <div class="skill-item"><strong>Services:</strong> Nextcloud, RustDesk, Ubuntu dev servers</div>
+                        <div class="skill-item"><strong>Containers:</strong> Docker-based application deployment</div>
+                        <div class="skill-item"><strong>Hobby Dev:</strong> Learning Godot Engine & GDScript for indie game development</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">📜 Certifications & Education</div>
+                    <div class="skills-list">
+                        <div class="skill-item"><strong>AWS Certified Cloud Practitioner</strong> (2024)</div>
+                        <div class="skill-item"><strong>AWS Certified AI Practitioner</strong> (2025)</div>
+                        <div class="skill-item"><strong>CompTIA Security+</strong> (2024)</div>
+                        <div class="skill-item"><strong>BS, Computer Networks & Cybersecurity</strong> — UMGC (2022)</div>
+                        <div class="skill-item"><strong>AAS, Cybersecurity</strong> — CCBC (2020)</div>
+                        <div class="skill-item"><strong>Software Developer Foundations</strong> — UMBC Training Centers (2022)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="section">
+                    <div class="section-title">⚔️ Quest Log (Experience)</div>
+                    
+                    <div class="experience-item">
+                        <div class="title">IT Engineer — NiSUS Technology Corporation</div>
+                        <div class="dates">November 2022 – Present (2+ years)</div>
+                        <ul>
+                            <li>Architected AWS Landing Zone for CMMC 2.0 & NIST 800-171 compliant enclave using AWS Managed AD, Amazon Workspaces, Systems Manager for patch management, and Security Hub</li>
+                            <li>Migrated undocumented legacy network to modern architecture (UniFi, Google Workspace, Windows 11, PreVeil encrypted storage) achieving full compliance</li>
+                            <li>Authored System Security Plan (SSP), policies, and risk assessments for cybersecurity frameworks</li>
+                            <li>Developed PowerShell and Bash automation scripts reducing configuration time and ensuring consistency</li>
+                            <li>Conducted comprehensive security audits and implemented corrective actions</li>
+                            <li>Managed AWS Route53 domains and maintained Confluence documentation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="title">IT Engineer — UMBC Training Centers</div>
+                        <div class="dates">August 2020 – November 2022 (2+ years)</div>
+                        <ul>
+                            <li>Automated lab environment creation and deployment using Bash, PowerShell, and VirtualBox</li>
+                            <li>Managed infrastructure with Saltstack, Git/GitLab for configuration management and version control</li>
+                            <li>Administered AWS environments (EC2, IAM, VPCs) for training purposes</li>
+                            <li>Revamped security controls using AWS VPC and IAM best practices</li>
+                            <li>Supported learning environments on Ubuntu Linux systems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="title">Software Engineer Intern — Paygevity, Inc</div>
+                        <div class="dates">October 2019 – September 2020</div>
+                        <ul>
+                            <li>Contributed to application deployments and bug fixes using Bash, Python, JavaScript</li>
+                            <li>Wrote regression tests using Cypress for front-end validation</li>
+                            <li>Researched and contributed to CI system design</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="title">Additional Experience</div>
+                        <div class="dates">2015 – 2020</div>
+                        <ul>
+                            <li><strong>FedEx Express:</strong> Package handler with proven reliability and teamwork</li>
+                            <li><strong>The Y (YMCA):</strong> Membership associate with customer service experience</li>
+                            <li><strong>Tastee Zone:</strong> Server/Head Closer with cash handling and training responsibilities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎯 Career Quest Objectives</div>
+            <p style="font-size: 10px; line-height: 1.5; margin: 0;">
+                Seeking opportunities in <strong>Cybersecurity, Systems Engineering, and GRC</strong> where I can leverage my AWS expertise, compliance knowledge, and automation skills. Passionate about building secure, compliant infrastructure while continuously learning new technologies. Long-term interest in development and indie game creation as creative outlets.
+            </p>
+        </div>
+        
+        <div class="footer">
+            🎲 This character sheet represents real professional experience in D&D 5e format 🎲<br>
+            "Any sufficiently advanced technology is indistinguishable from magic." – Arthur C. Clarke
+        </div>
+    </div>
+</body>
+</html>
